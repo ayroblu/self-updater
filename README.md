@@ -13,3 +13,9 @@ For the systemd config
 rsync -aPvv updater.service site:/lib/systemd/system/
 ssh systemctl daemon-reload
 ```
+
+To view logs
+
+```sh
+journalctl -u updater
+```
