@@ -1,0 +1,19 @@
+# Put in /lib/systemd/system/updater.service
+# https://nodesource.com/blog/running-your-node-js-app-with-systemd-part-1
+# systemctl daemon-reload
+# systemctl start updater
+# systemctl status updater
+# systemctl enable updater
+[Unit]
+Description=updater updates services on webhook
+After=network.target
+
+[Service]
+Environment=PORT=8000
+Type=simple
+User=root
+ExecStart=/usr/bin/node /var/www/self-updater/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
